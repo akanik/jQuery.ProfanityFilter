@@ -160,6 +160,9 @@
 
             // We've got an array of swears, let's proceed with removing them from the element.
             for (i = 0; i < badWords.length; i += 1) {
+                //This line limits the bad word to a singular word. So it won't filter out 
+                //'fuckface' or 'bag'o'shit'. I think this needs to be changed, at least
+                // for certain words like fuck
                 re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
 
                 var rand = generateRandomNumber(options.replaceWith.length -1);

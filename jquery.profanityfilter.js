@@ -163,7 +163,12 @@
                 //This line limits the bad word to a singular word. So it won't filter out 
                 //'fuckface' or 'bag'o'shit'. I think this needs to be changed, at least
                 // for certain words like fuck
-                re = new RegExp('\\b' + badWords[i] + '\\b', 'gi');
+                var regexNonWord = /^[a-z]+[\d_]/i;
+                var regexRepetition = /^(?=.*(.)\1\1)/;
+                var regexSingle = /^[a-zA-Z]{1}$/;
+                regexBadWords = new RegExp('\\b' + badWords[i] + '\\b' + '|' + regexNonWord + '|' + regexRepetition + '|' + regexSingle , 'gi');
+                
+                
 
                 var rand = generateRandomNumber(options.replaceWith.length -1);
 
